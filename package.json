@@ -1,0 +1,11 @@
+{
+  "name": "drive40",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node js/index.js"
+  },
+  "author": "IvanDrozdov",
+  "license": "ISC"
+}
