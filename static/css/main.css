@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка */
+}
 *{
 margin: 0;
 padding: 0;  
@@ -6,7 +9,7 @@ box-sizing: border-box;
 
 body{
     background-color: #000000;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Roboto", Sans-serif;
 }
 
 .container
@@ -23,7 +26,9 @@ body{
 }
 
 .button-link:hover {
-    color: #e5b748
+    color: #e5b748;
+    text-shadow: 0 0 10px #e5b748; 
+    
 }
 
 .back-button-link{
@@ -84,4 +89,76 @@ min-height: 660px;
 background-image: url('https://www.arminauto.com/images/carfinder-home.webp'); /* Путь к вашему изображению */
 background-size: cover; /* Заполняет весь элемент */
 background-position: center; /* Центрирует изображение */   
+}
+
+/* Reviews */
+
+.reviews{
+display: flex;
+flex-direction: column;
+}
+
+.text-reviews-z{
+    padding: 100px 0px 130px 5px; 
+    color: #FFFFFF;
+    font-size: 70px;
+    font-weight: 600;
+    line-height: 18px;
+    width:300px;
+    height:800px;
+
+}
+
+.text-reviews{
+    color: #FFFFFF;
+    font-family: "Roboto", Sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.text-position{
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative; 
+    font-size: 20px;
+    font-weight: 100;
+    
+}
+
+.text-content {
+    margin-bottom: 10px; 
+    line-height: 1.2; 
+    flex-grow: 1; /* Позволяет тексту занимать доступное пространство */
+    overflow-y: auto; /* Позволяет прокручивать текст, если он слишком длинный */
+}
+.container-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 0px; 
+    height: 100%;
+}
+
+
+/* Footer */
+
+.footer-text{
+    font-family: "Roboto", Sans-serif;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.footer-text2{
+    font-family: "Roboto", Sans-serif;
+    color: #e5b748;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.footer-text3{
+    font-family: "Roboto", Sans-serif;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 300;
 }
