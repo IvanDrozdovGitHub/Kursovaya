@@ -90,6 +90,18 @@ background-image: url('https://www.arminauto.com/images/carfinder-home.webp'); /
 background-size: cover; /* Заполняет весь элемент */
 background-position: center; /* Центрирует изображение */   
 }
+.back-button-color {
+    background-color: rgba(92, 92, 92, 0.5); /* Semi-transparent background */
+    border-radius: 30px;                    /* Rounded corners */
+    padding: 5px 30px;                      /* Padding for size */
+    transition: background-color 0.3s;      /* Smooth transition for background color */
+    color: white;                           /* Text color */
+    text-decoration: none;                   /* Remove underline from link */
+}
+
+.back-button-color:hover {
+    background-color: rgba(126, 100, 58, 0.7); /* Darker semi-transparent on hover */
+}
 
 /* Reviews */
 
@@ -145,13 +157,13 @@ flex-direction: column;
 .footer-text{
     font-family: "Roboto", Sans-serif;
     color: #ffffff;
-    font-size: 35px;
+    font-size: 65px;
     font-weight: 600;
 }
 
 .footer-text2{
     font-family: "Roboto", Sans-serif;
-    color: #e5b748;
+    color: #ff8c00;
     font-size: 20px;
     font-weight: 100;
 }
@@ -162,3 +174,17 @@ flex-direction: column;
     font-size: 30px;
     font-weight: 300;
 }
+
+.footer-text4{
+    font-family: "Roboto", Sans-serif;
+    color: #ffe5c5;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.back-image-footer{
+    min-height: 660px;
+    background-image: url('https://jetcar24.ru/wp-content/uploads/2022/12/ransom.png'); /* Путь к вашему изображению */
+    background-size: cover; /* Заполняет весь элемент */
+    background-position: center; /* Центрирует изображение */   
+    }

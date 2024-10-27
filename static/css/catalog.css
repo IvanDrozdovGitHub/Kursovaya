@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Фоновый цвет страницы */
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff; /* Цвет заголовка */
+}
+
+.car-list {
+    display: grid; /* Используем Grid для расположения карточек */
+    grid-template-columns: repeat(3, 1fr); /* Три столбца */
+    gap: 20px; /* Промежуток между карточками */
+    padding: 20px; /* Отступы вокруг сетки */
+    background-color: #000000;
+}
+
+.car-item {
+    margin: 0; /* Убираем отступы у элементов сетки */
+}
+
+.car-card {
+    border: 1px solid #000000;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.car-card:hover {
+    border: 1px solid #ffd000;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+}
+
+.car-details {
+    padding: 15px;
+    background-color: #000000;
+}
+
+.car-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ffffff; /* Цвет заголовка карточки */
+}
+
+.car-details p {
+    margin: 5px 0;
+    color: #ffffff; /* Цвет текста в карточке */
+}
