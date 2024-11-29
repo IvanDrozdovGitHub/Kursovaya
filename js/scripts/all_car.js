@@ -1,0 +1,97 @@
+
+// Fetch car data and populate the table
+async function fetchCars() {
+    try {
+        const response = await fetch('/cars_present'); // Adjust this endpoint as needed
+        if (!response.ok) {
+            throw new Error('Ошибка при получении данных о автомобилях');
+        }
+        const cars = await response.json();
+        populateTable(cars);
+    } catch (error) {
+        console.error(error);
+        alert('Не удалось загрузить данные о автомобилях.');
+    }
+}
+
+// Populate the table with car data
+function populateTable(cars) {
+    const tableBody = document.getElementById('car-table-body');
+    tableBody.innerHTML = ''; // Clear current table
+
+    cars.forEach(car => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${car.vin_car}</td>
+            <td>${car.make_car}</td>
+            <td>${car.model_car}</td>
+            <td>${car.year_of_manufacture_car}</td>
+            <td>${car.engine_car}</td>
+            <td>${car.max_power}</td>
+            <td>${car.max_speed}</td>
+            <td>${car.drive_car}</td>
+            <td>${car.mileage_car}</td>
+            <td>${car.color_car}</td>
+            <td><img src="/image/${car.vin_car}" alt="${car.make_car} ${car.model_car}" class="car-image"></td>
+            <td>${car.price_per_day}</td>
+            <td>${car.penalty_per_hour}</td>
+            <td>${car.pledge_car}</td>
+            <td>${car.status_car ? 'Доступен' : 'Недоступен'}</td>
+            <td>${car.body_type_car}</td>
+
+            <!-- Edit button -->
+            <td><button onclick="editCar('${car.vin_car}')">Редактировать</button></td>
+
+            <!-- Delete button -->
+            <td><button onclick="deleteCar('${car.vin_car}')">Удалить</button></td>`;
+        
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to search cars based on input
+async function searchCars() {
+    const query = document.getElementById('search-input').value.trim();
+    
+    try {
+        const response = await fetch(`/search_cars?query=${encodeURIComponent(query)}`); // Adjust this endpoint as needed
+        if (!response.ok) {
+            throw new Error('Ошибка при поиске автомобилей');
+        }
+        
+        const cars = await response.json();
+        populateTable(cars);
+    } catch (error) {
+        console.error(error);
+        alert('Не удалось выполнить поиск автомобилей.');
+    }
+}
+
+// Function to delete a car
+async function deleteCar(vin) {
+    if (confirm(`Вы уверены, что хотите удалить автомобиль с VIN ${vin}?`)) {
+        try {
+            const response = await fetch(`/delete/${vin}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error('Ошибка при удалении автомобиля');
+            }
+            
+            alert(`Автомобиль с VIN ${vin} успешно удален!`);
+            
+            // Refresh the car list
+            fetchCars(); // Re-fetch cars to update the list
+        } catch (error) {
+            console.error(error);
+            alert('Не удалось удалить автомобиль.');
+        }
+    }
+}
+
+// Function to edit a car
+function editCar(vin) {
+    window.location.href = `/edit/${vin}`; // Redirect to the edit page for the selected car
+}
+
+document.addEventListener('DOMContentLoaded', fetchCars);

@@ -1,4 +1,3 @@
-// download.js
 const { Pool } = require('pg');
 const path = require('path');
 
@@ -21,14 +20,14 @@ module.exports = (app, upload) => {
         try {
             const { originalname, buffer } = file;
             const query = `
-                INSERT INTO cars (VIN_car, make_car, model_car, year_of_manufacture_car,
+                INSERT INTO cars (vin_car, make_car, model_car, year_of_manufacture_car,
                                   engine_car, max_power, max_speed, drive_car,
                                   mileage_car, color_car, photo_car,
                                   price_per_day, penalty_per_hour,
-                                  pledge_car, status_car)
+                                  pledge_car, status_car, body_type_car)
                 VALUES ($1, $2, $3, $4, $5, $6,
                         $7, $8, $9, $10,
-                        $11, $12, $13, $14, $15)
+                        $11, $12, $13, $14, $15, $16)
             `;
 
             const values = [
@@ -46,11 +45,12 @@ module.exports = (app, upload) => {
                 req.body.price_per_day,
                 req.body.penalty_per_hour,
                 req.body.pledge,
-                req.body.status === 'true' // Преобразование строки в булевое значение
+                req.body.status === 'true', // Преобразование строки в булевое значение
+                req.body.body_type_car // Добавлено значение для типа кузова
             ];
 
             await pool.query(query, values);
-            res.send(`Файл ${originalname} загружен и сохранен в базе данных успешно!`);
+            res.redirect('/all_car');
         } catch (error) {
             console.error(error);
             res.status(500).send(`Ошибка при сохранении файла в базе данных: ${error.message}`);
@@ -76,4 +76,4 @@ module.exports = (app, upload) => {
             res.status(500).send('Ошибка при получении изображения.');
         }
     });
-};
+}

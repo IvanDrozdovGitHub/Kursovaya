@@ -1,0 +1,50 @@
+
+table {
+    width: 100%; /* Занимает всю ширину страницы */
+    border-collapse: collapse; /* Убирает двойные границы */
+}
+
+th, td {
+    border: 1px solid #ffffff; /* Граница для ячеек */
+    padding: 12px; /* Отступы внутри ячеек */
+    text-align: center; /* Центрирование текста */
+}
+
+th {
+    background-color: #5e5e5e; /* Цвет фона заголовков */
+}
+
+.car-image {
+    height: 100px; /* Высота изображений автомобилей */
+}
+
+.search-container button {
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.search-container button:hover {
+    background-color: #45a049;
+}
+
+/* Добавление стилей для формы поиска */
+.search-container {
+    margin-bottom: 20px;
+}
+.search-container input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+        
+table {
+    width: 100%;
+    border-collapse: collapse; /* Убирает двойные границы между ячейками */
+    overflow-x: auto; /* Добавляет прокрутку по горизонтали */
+    display: block; /* Позволяет использовать overflow */
+}

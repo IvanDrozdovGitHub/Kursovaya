@@ -1,5 +1,11 @@
+::-webkit-scrollbar {
+    width: 0; /* Убирает ширину скроллбара */
+    background: transparent; /* Фон скроллбара */
+}
+
 html {
     scroll-behavior: smooth; /* Плавная прокрутка */
+
 }
 *{
 margin: 0;
@@ -51,7 +57,12 @@ body{
     top: 0;
     background-color: #191919;
     padding: 20px 0px 20px 0px;
-    border-bottom: 1px solid  #484848
+    border-bottom: 1px solid  #4b4b4b
+}
+
+.transparent-header {
+    background-color: rgba(22, 22, 22, 0.271); /* Цвет фона с прозрачностью */
+    backdrop-filter: blur(20px); /* Уровень размытия */
 }
 
 .header-login{
@@ -85,17 +96,17 @@ body{
 }
 
 .back-image{
-min-height: 660px;
-background-image: url('https://www.arminauto.com/images/carfinder-home.webp'); /* Путь к вашему изображению */
+min-height: 720px;
+background-image: url('../img/19501.jpg'); /* Путь к вашему изображению */
 background-size: cover; /* Заполняет весь элемент */
 background-position: center; /* Центрирует изображение */   
 }
 .back-button-color {
-    background-color: rgba(92, 92, 92, 0.5); /* Semi-transparent background */
+    background-color: rgb(255, 255, 255); /* Semi-transparent background */
     border-radius: 30px;                    /* Rounded corners */
     padding: 5px 30px;                      /* Padding for size */
     transition: background-color 0.3s;      /* Smooth transition for background color */
-    color: white;                           /* Text color */
+    color: rgb(0, 0, 0);                           /* Text color */
     text-decoration: none;                   /* Remove underline from link */
 }
 

@@ -1,5 +1,5 @@
 .registration-form {
-    background-color: rgba(78, 78, 78,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -14,36 +14,9 @@
 .registration-form label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #000000;
     font-weight: bold;
 }
-
-.registration-form input[type="text"],
-.registration-form input[type="password"],
-.registration-form input[type="tel"] {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.registration-form button[type="submit"] {
-    padding: 15px;
-    border-radius: 10px;
-    border: none;
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
-.registration-form button[type="submit"]:hover {
-    background-color: #45a049; /* Darker shade on hover */
-}
-
 
 body {
     background-color: #000000;
@@ -56,12 +29,12 @@ body {
     padding: 20px;
 }
 .form-column {
-    background-color: rgba(25, 25, 25, 0.5);
+    background-color: rgba(255, 255, 255, 0.107);
     border-radius: 10px;
     padding: 20px;
-    width: 400px;
+    width: 500px;
 }
-input[type="text"], input[type="tel"], select {
+input[type="text"], input[type="tel"], input[type="password"], select {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -70,7 +43,6 @@ input[type="text"], input[type="tel"], select {
     background-color: rgba(255, 255, 255, 0.8);
 }
 button {
-    margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
     background-color: #ffd000;
@@ -81,3 +53,5 @@ button {
 button:hover {
     background-color: #ffb300;
 }
+
+

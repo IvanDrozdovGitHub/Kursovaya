@@ -7,92 +7,58 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/catalog.css">
+    <script rel="stylesheet" src="/js/scripts/scroll.js"></script> 
+    <script rel="stylesheet" src="/js/scripts/auth.js"></script> 
+    <script rel="stylesheet" src="/js/scripts/fetchCars.js"></script> 
 </head>
+
 <body class="body">
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-content" style="gap: 50px;">
                 <a href="/">
-                    <img style="width: 190px;" src="https://jetcar24.ru/wp-content/uploads/2022/11/logo.svg" alt="">
+                    <img style="width: 190px;" src="./img/logo.png">
                 </a>
                 <nav class="header-nav">
-                    <a class="button-link" href="">Аренда авто</a>
+                    <a class="button-link" href="/catalog">Аренда авто</a>
                     <a class="button-link" href="#contacts">Контакты</a>
                     <a class="button-link" href="#reviews">О нас</a>
                 </nav>
-                <div class="header-login button-link ">
-                    <a class="button-link" href="#">Вход</a>
-                    <a class="back-button-link"href="/registration">Регистрация</a>
+            </div>
+            <div class="header-login button-link ">
+                <div id="auth-buttons"style="display: none;">
+                    <a class="button-link" id="login-button" href="/login">Вход</a>
+                    <a class="back-button-link" id="register-button" href="/registration">Регистрация</a>
                 </div>
-            </div>  
-        </div>
-    </header>
-    <div style="color: #e6e6e6;">
-        <h1>Доступные Автомобили</h1>
-        <div id="car-list" class="car-list" style="margin: 0px 100px;"></div>
+                <div id="user-cabinet" style="display: none;">
+                    <a class="button-link" href="/profile">Личный кабинет</a>
+                    <button class="back-button-link" id="logout-button">Выход</button>
+                </div>
+            </div>
+        </div>  
+    </div>
+</header>
 
-    <script>
-async function fetchCars() {
-    try {
-        const response = await fetch('/cars');
-        if (!response.ok) throw new Error('Сеть не в порядке');
-        
-        const cars = await response.json();
-        const carListDiv = document.getElementById('car-list');
-        
-        // Отображение автомобилей
-        cars.forEach(car => {
-            const carItem = document.createElement('div');
-            carItem.className = 'car-item';
-
-            // Оборачиваем карточку автомобиля в ссылку
-            carItem.innerHTML = `
-                <a href="/car/${car.vin_car}" style="text-decoration: none; color: inherit;">
-                    <div class="car-card">
-                        <img src="/image/${car.vin_car}" alt="${car.make_car} ${car.model_car}" class="car-image">
-                        <div class="car-details">
-                            <h2 class="car-title">${car.make_car} ${car.model_car}</h2>
-                            <p>Год выпуска: <strong>${car.year_of_manufacture_car}</strong></p>
-                            <p>Цена за день: <strong>${car.price_per_day} руб.</strong></p>
-                            <p>Статус: <strong>${car.status_car ? 'Доступен' : 'Недоступен'}</strong></p>
-                        </div>
-                    </div>
-                </a>
-            `;
-            carListDiv.appendChild(carItem);
-        });
-    } catch (error) {
-        console.error('Ошибка при получении автомобилей:', error);
-    }
-}
-
-// Получение автомобилей при загрузке страницы
-window.onload = fetchCars;
-    </script>
-</div>
+<main style="color: #e6e6e6;">
+    <div id="car-list" class="car-list" style="margin: 40px 100px;"></div>
     <div class="main">
         <div id="reviews" class="container">
             <span class="text-reviews-z" href="#">ОТЗЫВЫ НАШИХ КЛИЕНТОВ</span>
             <div class="text-position container-text">
                 <div style="margin:50px;justify-content:center;width:500px;height:600px;overflow:hidden;position:relative;"><iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/207372973242?comments"></iframe><a href="https://yandex.ru/maps/org/moskovskiy_gosudarstvenny_tekhnicheskiy_universitet_imeni_n_e_baumana_kampus/207372973242/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box">Московский государственный технический университет имени Н. Э. Баумана, кампус на карте Калуги — Яндекс Карты</a></div>
                 <div class="text-content" style="margin-top:40px; max-height: 600px;">
-                    <p style="padding: 10px;">
-                        Пожалуйста, поделитесь своим опытом взаимодействия с нашим персоналом, качеством предоставляемой информации об автомобилях в аренду, ценовой политикой и общим впечатлением от посещения нашего автосалона.                    </p>
-                    <p style="padding: 10px;">
-                        Мы будем благодарны за любые отзывы: положительные, если вы остались довольны, и конструктивные, если у вас есть предложения по улучшению. Вы можете оставить отзыв на картах, через наш официальный веб-сайт по кнопке «Оставить отзыв», в социальных сетях или на той площадке, где узнали о нашей услуге аренды автомобилей.
-                    </p>
-                    <p style="padding: 10px;">
-                        Мы обязательно изучим каждый отзыв и примем меры в соответствии с вашими комментариями. Спасибо за вашу поддержку и интерес к нашей услуге! Мы ценим ваше мнение и будем рады видеть вас снова.
-                    </p>                    
-                    <p style="padding: 10px;">
-                        С уважением, команда аренды автомобилей JETCAR.                   </p>
+                    <p style="padding: 10px;">Пожалуйста, поделитесь своим опытом взаимодействия с нашим персоналом, качеством предоставляемой информации об автомобилях в аренду, ценовой политикой и общим впечатлением от посещения нашего автосалона.</p>
+                    <p style="padding: 10px;">Мы будем благодарны за любые отзывы: положительные, если вы остались довольны, и конструктивные, если у вас есть предложения по улучшению. Вы можете оставить отзыв на картах, через наш официальный веб-сайт по кнопке «Оставить отзыв», в социальных сетях или на той площадке, где узнали о нашей услуге аренды автомобилей.</p>
+                    <p style="padding: 10px;">Мы обязательно изучим каждый отзыв и примем меры в соответствии с вашими комментариями. Спасибо за вашу поддержку и интерес к нашей услуге! Мы ценим ваше мнение и будем рады видеть вас снова.</p>                    
+                    <p style="padding: 10px;">С уважением, команда аренды автомобилей DRIVE 40.</p>
                 </div>
             </div>
         </div>
     </div>
-
     <div id="contacts" class="back-image-footer" style="padding-top:100px;">
         <div class="container" style="padding-top: 0px;height: 400px">
             <div style="display: flex; flex-direction: column; gap:10px">
@@ -104,15 +70,15 @@ window.onload = fetchCars;
             </div>
         </div>
     </div>
+    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskiy_gosudarstvenny_tekhnicheskiy_universitet_imeni_n_e_baumana_kampus/207372973242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московский государственный технический университет имени Н. Э. Баумана, кампус</a><a href="https://yandex.ru/maps/6/kaluga/category/university/184106140/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ВУЗ в Калуге</a><iframe src="https://yandex.ru/map-widget/v1/?ll=36.305923%2C54.485975&mode=poi&poi%5Bpoint%5D=36.304176%2C54.486322&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D207372973242&z=16.89" width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+</main>
 
+<script>
+    window.onload = () => {
+        fetchCars(); // Получение автомобилей
+        checkAuth(); // Проверка статуса аутентификации
+    };
+</script>
 
-
-        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskiy_gosudarstvenny_tekhnicheskiy_universitet_imeni_n_e_baumana_kampus/207372973242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московский государственный технический университет имени Н. Э. Баумана, кампус</a><a href="https://yandex.ru/maps/6/kaluga/category/university/184106140/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ВУЗ в Калуге</a><iframe src="https://yandex.ru/map-widget/v1/?ll=36.305923%2C54.485975&mode=poi&poi%5Bpoint%5D=36.304176%2C54.486322&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D207372973242&z=16.89" width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-        <div>
-
-        </div>
-    <div style="min-height: 70px;">
-
-</div>
 </body>
 </html>

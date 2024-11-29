@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive40 | Список Автомобилей</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/registration.css">
+    <link rel="stylesheet" href="/css/all_car.css">
+    <script rel="stylesheet" src="/js/scripts/auth.js"></script> 
+    <script rel="stylesheet" src="/js/scripts/scroll.js"></script> 
+    <script rel="stylesheet" src="/js/scripts/all_car.js"></script> 
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-content" style="gap: 50px;">
+                <a href="/">
+                    <img style="width: 190px;" src="/img/logo.png">
+                </a>
+                <nav class="header-nav">
+                    <a class="button-link" href="/catalog">Аренда Авто</a>
+                    <a class="button-link" href="/download_car">Добавление</a>
+                </nav>
+            </div>    
+            <div class="header-login button-link ">
+                <div id="auth-buttons" style="display: none;">
+                    <a class="button-link" id="login-button" href="/login">Вход</a>
+                    <a class="back-button-link" id="register-button" href="/registration">Регистрация</a>
+                </div>
+                <div id="user-cabinet" style="display: none;">
+                    <a class="button-link" href="/profile">Личный кабинет</a>
+                    <button class="back-button-link" id="logout-button">Выход</button>
+                </div>
+            </div>
+        </div>  
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h1>Список всех автомобилей</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Введите VIN, марку или модель...">
+            <button onclick="searchCars()">Поиск</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>VIN</th>
+                    <th>Марка</th>
+                    <th>Модель</th>
+                    <th>Год выпуска</th>
+                    <th>Двигатель</th>
+                    <th>Макс. мощность</th>
+                    <th>Макс. скорость</th>
+                    <th>Привод</th>
+                    <th>Пробег</th>
+                    <th>Цвет</th>
+                    <th>Фото</th>
+                    <th>Цена за день</th>
+                    <th>Штраф за час</th>
+                    <th>Залог</th>
+                    <th>Статус</th>
+                    <th>Тип кузова</th>
+                    <th>Действия</th> 
+                    <th>Удаление</th>
+                </tr>
+            </thead>
+            <tbody id="car-table-body"></tbody>
+        </table>
+    </div>
+</main>
+
+</body >
+</html >
