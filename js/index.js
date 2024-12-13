@@ -19,24 +19,28 @@ app.use('/js', express.static(path.join(__dirname)));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Настройка CORS
 app.use(cors({
-    origin: "http://localhost:3000", // ваш клиентский адрес
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
-    credentials: true // Позволяет отправлять куки
+    credentials: true
 }));
 
-// Настройка сессий
 app.use(session({
-    secret: '21822', // Замените на ваш секретный ключ
+    secret: '21822',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Установите true, если используете HTTPS
+    cookie: { secure: false }
 }));
 
-// Эндпоинт для проверки аутентификации
+app.get('/api/check-AdminOrModer', (req, res) => {
+    if (req.session.user && (req.session.user.user_status === 'admin' || req.session.user.user_status === 'moder')){
+        return res.json({ isAdminOrModer: true });
+    }
+    res.json({ isAdminOrModer: false });
+});
+
 app.get('/api/check-auth', (req, res) => {
-    if (req.session.user) { // Проверяем наличие информации о пользователе в сессии
+    if (req.session.user) {
         return res.json({ isAuthenticated: true });
     }
     res.json({ isAuthenticated: false });
@@ -44,22 +48,22 @@ app.get('/api/check-auth', (req, res) => {
 
 
 const isAdmin = (req, res, next) => {
-    if (req.session.user && req.session.user.user_status === 'admin') { // Проверяем наличие пользователя и его статус
-        next(); // Пользователь аутентифицирован и является администратором, продолжаем
+    if (req.session.user && req.session.user.user_status === 'admin') {
+        next();
     } else {
-        res.redirect('/404');// 403 Forbidden
+        res.redirect('/404');
     }
 };
 
-const isModer = (req, res, next) => {
-    if (req.session.user && req.session.user.user_status === 'moder') { // Проверяем наличие пользователя и его статус
-        next(); // Пользователь аутентифицирован и является администратором, продолжаем
+const isModerAndIsAdmin = (req, res, next) => {
+    if (req.session.user && (req.session.user.user_status === 'admin' || req.session.user.user_status === 'moder')) {
+        next();
     } else {
-        res.redirect('/404'); // 403 Forbidden
+        res.redirect('/404');
     }
 };
 
-// Маршруты для HTML страниц
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
@@ -72,13 +76,13 @@ app.get('/download_car', isAdmin,(req, res) => {
     res.sendFile(path.join(__dirname, '..', 'download_car.html'));
 });
 
-app.get('/all_car',isAdmin,(req, res) => {
+app.get('/all_car',isModerAndIsAdmin,(req, res) => {
     res.sendFile(path.join(__dirname, '..', 'all_car.html'));
 });
 
-app.get('/deals', isAdmin || isModer,(req, res) => {
+app.get('/deals', isModerAndIsAdmin,(req, res) => {
     res.sendFile(path.join(__dirname, '..', 'deals.html'));
-});
+}); 
 
 app.get('/catalog', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'catalog.html'));
@@ -92,23 +96,34 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'login.html'));
 });
 
-// Настройка multer для загрузки файлов в память
+app.get('/menu_adm',isModerAndIsAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'menu_adm.html'));
+});
+
+app.get('/deals_now',isModerAndIsAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'deals_now.html'));
+});
+
+app.get('/users', isAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'users.html'));
+});
+  
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Импорт маршрутов
 require('./download.js')(app, upload); 
 require('./registration.js')(app); 
 require('./catalog.js')(app);
 require('./delete.js')(app);
 require('./edit.js')(app, upload);
 require('./deals.js')(app);
-// Обработка 404 ошибок
+require('./profile.js')(app);
+require('./users.js')(app);
+
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, '..', '404.html'));
 });
 
-// Запуск сервера
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Сервер запущен: http://localhost:${PORT}`);

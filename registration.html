@@ -9,64 +9,73 @@
     <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/registration.css">
-    <script rel="stylesheet" src="/js/scripts/scroll.js"></script> 
+    <script rel="stylesheet" src="/js/scripts/scroll.js"></script>
+    <script rel="stylesheet" src="/js/scripts/password.js"></script>  
+
+    <script rel="stylesheet" src="/js/scripts/telephone.js"></script> 
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-content" style="gap: 50px;">
-                    <a href="/">
-                        <img style="width: 190px;" src="./img/logo.png">
-                    </a>
-                    <nav class="header-nav">
-                        <a class="button-link" href="/catalog">Аренда авто</a>
-                        <a class="button-link" href="#contacts">Контакты</a>
-                        <a class="button-link" href="#reviews">О нас</a>
-                    </nav>
-                </div>
-                <span style="font-weight: 600; font-size: 26px; color: white;">Регистрация пользователя</span>
-            </div>  
-        </div>
-    </header>
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-content" style="gap: 50px;">
+                <a href="/">
+                    <img style="width: 190px;" src="./img/logo.png">
+                </a>
+                <nav class="header-nav">
+                    <a class="button-link" href="/catalog">Аренда авто</a>
+                    <a class="button-link" href="#contacts">Контакты</a>
+                    <a class="button-link" href="#reviews">О нас</a>
+                </nav>
+            </div>
+            <span style="font-weight: 600; font-size: 26px; color: white;">Регистрация пользователя</span>
+        </div>  
+    </div>
+</header>
+<main>
     <div style="display:flex; justify-content: center; align-items: center; height: 760px; width: 100%;">
-        <main class="body" style="display: flex; justify-content: center; height: 500px; width: 100%;">
-        <div style="display: flex; background-color: rgba(63, 63, 63, 0.39); border-radius: 20px;">
-            <div style="width: 100%; max-width: 400px;">
-                <a style="padding: 10px; display:flex; text-align: center; justify-content: center;" href="javascript:void(0);" onclick="window.history.back();">Вернуться назад</a>
-                <h1 style="padding: 20px; width: 400px;display: flex; justify-content: center; ">Введите данные для регистрации</h1>
+        <main class="body" style="display: flex; justify-content: center; height: 580px; width: 100%;">
+            <div style="display: flex; background-color: rgba(63, 63, 63, 0.39); border-radius: 20px;">
+                <div style="width: 100%; max-width: 400px;">
+                    <a style="padding: 10px; display:flex; text-align: center; justify-content: center;" href="javascript:void(0);" onclick="window.history.back();">Вернуться назад</a>
+                    <h1 style="padding: 20px; width: 400px;display: flex; justify-content: center; ">Введите данные для регистрации</h1>
+                </div>
+                <div style="width: 100%; max-width: 400px;">
+                    <form action="/register" method="POST">
+                        <div class="form-container" style="display: flex; justify-content: center;">
+                            <div class="form-column" style="max-width: 500px; width: 100%;">
+                                <label for="first_name">Имя:</label>
+                                <input type="text" id="first_name" name="first_name" required maxlength="50" placeholder="Иван">
+                                
+                                <label for="surname">Фамилия:</label>
+                                <input type="text" id="surname" name="surname" required maxlength="50" placeholder="Иванов">
+
+                                <label for="middlename">Отчество:</label>
+                                <input type="text" id="middlename" name="middlename" required maxlength="50" placeholder="Иванович">
+
+                                <label for="telephone_number">Телефон:</label>
+                                <input type="tel" id="telephone_number" name="telephone_number" title="Введите по примеру: 88007773322" placeholder="8 (800) 234-48-42" pattern="^8 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+
+                                <label for="login_user">Логин:</label>
+                                <input type="text" id="login_user" name="login_user" required maxlength="255">
+                                
+                                <label for="password_user">Пароль:</label>
+                                <div style="display: flex;">
+                                    <input type="password" id="password_user" name="password_user" required minlength="6">
+                                    <span>
+                                        <button type="button" style="height: 35px;" id="togglePassword" onclick="togglePasswordVisibility()">Показать</button>
+                                    </span>
+                                </div>
+                                <label for="confirm_password_user">Введите пароль еще раз:</label>
+                                <input type="password" id="confirm_password_user" name="confirm_password_user" required minlength="6"> 
+                                <button type="submit">Зарегистрироваться</button> 
+                            </div>
+                        </div> 
+                    </form>
+                </div>
             </div>
-            <div style="width: 100%; max-width: 400px;">
-                <form action="/register" method="POST">
-                    <div class="form-container" style="display: flex; justify-content: center;">
-                        <div class="form-column" style="max-width: 500px; width: 100%;">
-                            <label for="first_name">Имя:</label>
-                            <input type="text" id="first_name" name="first_name" required maxlength="50" placeholder="Иван">
-
-                            <label for="surname">Фамилия:</label>
-                            <input type="text" id="surname" name="surname" required maxlength="50" placeholder="Иванов">
-
-                            <label for="middlename">Отчество:</label>
-                            <input type="text" id="middlename" name="middlename" required maxlength="50" placeholder="Иванович">
-
-                            <label for="telephone_number">Телефон:</label>
-                            <input type="tel" id="telephone_number" name="telephone_number" title="Введите по примеру: 88007773322" placeholder="8 (800) 234-48-42" pattern="^8 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
-
-                            <label for="login_user">Логин:</label>
-                            <input type="text" id="login_user" name="login_user" required maxlength="255">
-
-                            <label for="password_user">Пароль:</label>
-                            <input type="password" id="password_user" name="password_user" required minlength="6">
-
-                            <button type="submit">Зарегистрироваться</button>
-                        </div>
-                    </div> 
-                </form>
-            </div>
-        </div>
         </main>
     </div>
-
     <div class="main">
         <div id="reviews" class="container">
             <span class="text-reviews-z" href="#">ОТЗЫВЫ НАШИХ КЛИЕНТОВ</span>
@@ -81,7 +90,6 @@
             </div>
         </div>
     </div>
-
     <div id="contacts" class="back-image-footer" style="padding-top:100px;">
         <div class="container" style="padding-top: 0px;height: 400px">
             <div style="display: flex; flex-direction: column; gap:10px">
@@ -93,42 +101,8 @@
             </div>
         </div>
     </div>
+    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/moskovskiy_gosudarstvenny_tekhnicheskiy_universitet_imeni_n_e_baumana_kampus/207372973242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московский государственный технический университет имени Н. Э. Баумана, кампус</a><a href="https://yandex.ru/maps/6/kaluga/category/university/184106140/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ВУЗ в Калуге</a><iframe src="https://yandex.ru/map-widget/v1/?ll=36.305923%2C54.485975&mode=poi&poi%5Bpoint%5D=36.304176%2C54.486322&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D207372973242&z=16.89" width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+</main>
 
-    <div style="position:relative;overflow:hidden;">
-        <a href="https://yandex.ru/maps/org/moskovskiy_gosudarstvenny_tekhnicheskiy_universitet_imeni_n_e_baumana_kampus/207372973242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Московский государственный технический университет имени Н. Э. Баумана, кампус</a><a href="https://yandex.ru/maps/6/kaluga/category/university/184106140/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ВУЗ в Калуге</a><iframe src="https://yandex.ru/map-widget/v1/?ll=36.305923%2C54.485975&mode=poi&poi%5Bpoint%5D=36.304176%2C54.486322&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D207372973242&z=16.89" width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const input = document.getElementById('telephone_number');
-    
-    // Максимальная длина номера телефона (11 цифр)
-    const maxLength = 12; // Учитываем форматирование, например: "8 (800) 234-48-42"
-
-    // Функция форматирования номера телефона
-    function formatPhoneNumber(value) {
-        value = value.replace(/\D/g, ''); // Удаляем все нецифровые символы
-        if (value.length > 1) {
-            value = '8' + value.slice(1); // Обеспечиваем, чтобы номер начинался с '8'
-            value = value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '$1 ($2) $3-$4-$5');
-        } else if (value.length === 1) {
-            value = '8'; // Если введена только одна цифра
-        }
-        return value;
-    }
-
-    // Устанавливаем начальное отформатированное значение
-    input.value = formatPhoneNumber(input.value);
-
-    // Событие ввода для форматирования по мере ввода пользователем
-    input.addEventListener('input', function() {
-        // Ограничение длины ввода
-        if (this.value.replace(/\D/g, '').length >= maxLength) {
-            this.value = formatPhoneNumber(this.value.slice(0, -1)); // Удаляем последний символ
-        } else {
-            this.value = formatPhoneNumber(this.value);
-        }
-    });
-});
-
-</script>
 </body >
 </html >

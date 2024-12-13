@@ -1,10 +1,10 @@
 ::-webkit-scrollbar {
-    width: 0; /* Убирает ширину скроллбара */
-    background: transparent; /* Фон скроллбара */
+    width: 0;
+    background: transparent;
 }
 
 html {
-    scroll-behavior: smooth; /* Плавная прокрутка */
+    scroll-behavior: smooth;
 
 }
 *{
@@ -26,9 +26,9 @@ body{
 .button-link {
     display: inline-block;
     text-decoration: none; 
-    color: white; /* Цвет текста */
-    border: 2px solid transparent; /* Граница для эффекта при наведении */
-    transition: color 0.3s; /* Плавный переход */
+    color: white;
+    border: 2px solid transparent;
+    transition: color 0.3s;
 }
 
 .button-link:hover {
@@ -39,7 +39,7 @@ body{
 
 .back-button-link{
     text-decoration: none; 
-    color: white; /* Цвет текста */
+    color: white;
     border: 2px solid transparent;
     padding: 5px 20px;
     background-color: #000000;
@@ -61,8 +61,8 @@ body{
 }
 
 .transparent-header {
-    background-color: rgba(22, 22, 22, 0.271); /* Цвет фона с прозрачностью */
-    backdrop-filter: blur(20px); /* Уровень размытия */
+    background-color: rgba(22, 22, 22, 0.271);
+    backdrop-filter: blur(20px);
 }
 
 .header-login{
@@ -97,21 +97,21 @@ body{
 
 .back-image{
 min-height: 720px;
-background-image: url('../img/19501.jpg'); /* Путь к вашему изображению */
-background-size: cover; /* Заполняет весь элемент */
-background-position: center; /* Центрирует изображение */   
+background-image: url('../img/19501.jpg');
+background-size: cover;
+background-position: center;
 }
 .back-button-color {
-    background-color: rgb(255, 255, 255); /* Semi-transparent background */
-    border-radius: 30px;                    /* Rounded corners */
-    padding: 5px 30px;                      /* Padding for size */
-    transition: background-color 0.3s;      /* Smooth transition for background color */
-    color: rgb(0, 0, 0);                           /* Text color */
-    text-decoration: none;                   /* Remove underline from link */
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    padding: 5px 30px;
+    transition: background-color 0.3s;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 
 .back-button-color:hover {
-    background-color: rgba(126, 100, 58, 0.7); /* Darker semi-transparent on hover */
+    background-color: rgba(126, 100, 58, 0.7);
 }
 
 /* Reviews */
@@ -152,8 +152,8 @@ flex-direction: column;
 .text-content {
     margin-bottom: 10px; 
     line-height: 1.2; 
-    flex-grow: 1; /* Позволяет тексту занимать доступное пространство */
-    overflow-y: auto; /* Позволяет прокручивать текст, если он слишком длинный */
+    flex-grow: 1;
+    overflow-y: auto;
 }
 .container-text {
     display: grid;

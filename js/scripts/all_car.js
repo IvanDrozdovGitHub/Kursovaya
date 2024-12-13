@@ -1,8 +1,6 @@
-
-// Fetch car data and populate the table
 async function fetchCars() {
     try {
-        const response = await fetch('/cars_present'); // Adjust this endpoint as needed
+        const response = await fetch('/cars_present'); 
         if (!response.ok) {
             throw new Error('Ошибка при получении данных о автомобилях');
         }
@@ -14,15 +12,14 @@ async function fetchCars() {
     }
 }
 
-// Populate the table with car data
 function populateTable(cars) {
     const tableBody = document.getElementById('car-table-body');
-    tableBody.innerHTML = ''; // Clear current table
+    tableBody.innerHTML = ''; 
 
     cars.forEach(car => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${car.vin_car}</td>
+           <td><a href="/car/${car.vin_car}">${car.vin_car}</a></td>
             <td>${car.make_car}</td>
             <td>${car.model_car}</td>
             <td>${car.year_of_manufacture_car}</td>
@@ -49,7 +46,6 @@ function populateTable(cars) {
     });
 }
 
-// Function to search cars based on input
 async function searchCars() {
     const query = document.getElementById('search-input').value.trim();
     
@@ -67,21 +63,13 @@ async function searchCars() {
     }
 }
 
-// Function to delete a car
 async function deleteCar(vin) {
     if (confirm(`Вы уверены, что хотите удалить автомобиль с VIN ${vin}?`)) {
         try {
             const response = await fetch(`/delete/${vin}`, {
                 method: 'DELETE'
             });
-            if (!response.ok) {
-                throw new Error('Ошибка при удалении автомобиля');
-            }
-            
-            alert(`Автомобиль с VIN ${vin} успешно удален!`);
-            
-            // Refresh the car list
-            fetchCars(); // Re-fetch cars to update the list
+            fetchCars(); 
         } catch (error) {
             console.error(error);
             alert('Не удалось удалить автомобиль.');
@@ -89,9 +77,8 @@ async function deleteCar(vin) {
     }
 }
 
-// Function to edit a car
 function editCar(vin) {
-    window.location.href = `/edit/${vin}`; // Redirect to the edit page for the selected car
+    window.location.href = `/edit/${vin}`; 
 }
 
 document.addEventListener('DOMContentLoaded', fetchCars);

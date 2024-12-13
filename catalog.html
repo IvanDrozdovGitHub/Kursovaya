@@ -35,6 +35,7 @@
                     <a class="back-button-link" id="register-button" href="/registration">Регистрация</a>
                 </div>
                 <div id="user-cabinet" style="display: none;">
+                    <a id="adm" style="display: none;" class="button-link" href="/menu_adm">Меню</a>
                     <a class="button-link" href="/profile">Личный кабинет</a>
                     <button class="back-button-link" id="logout-button">Выход</button>
                 </div>
@@ -44,6 +45,12 @@
 </header>
 
 <main style="color: #e6e6e6;">
+    <div class="main search">
+        <div id="search-container">
+            <input type="text" id="search-query" placeholder="         ПОИСК АВТОМОБОИЛЕЙ">
+            <button onclick="fetchAndFilterCars()">Поиск</button>
+        </div>
+    </div>
     <div id="car-list" class="car-list" style="margin: 40px 100px;"></div>
     <div class="main">
         <div id="reviews" class="container">

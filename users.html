@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive40 | Список Автомобилей</title>
+    <title>Drive40 | Список Пользователей</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="/css/all_car.css">
     <script rel="stylesheet" src="/js/scripts/auth.js"></script> 
     <script rel="stylesheet" src="/js/scripts/scroll.js"></script> 
-    <script rel="stylesheet" src="/js/scripts/all_car.js"></script> 
-    
+    <script rel="stylesheet" src="/js/scripts/users.js"></script>
 </head>
 
 <body>
@@ -47,37 +46,43 @@
 
 <main>
     <div class="container">
-        <h1>Список всех автомобилей</h1>
+        <h1>Список всех пользователей</h1>
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Введите VIN, марку или модель...">
-            <button onclick="searchCars()">Поиск</button>
+            <input type="tel" id="search-input"  placeholder="Введите номер телефона...">
+            <button onclick="searchUsers()">Поиск</button> 
         </div>
+        <div style="display: flex;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчество</th>
+                        <th>Телефон</th>
+                        <th>Статус</th>
+                        <th>Логин</th>
+                        <th>Действия</th> 
+                    </tr>
+                </thead>
+                <tbody id="user-table-body"></tbody>
+            </table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>VIN</th>
-                    <th>Марка</th>
-                    <th>Модель</th>
-                    <th>Год выпуска</th>
-                    <th>Двигатель</th>
-                    <th>Макс. мощность</th>
-                    <th>Макс. скорость</th>
-                    <th>Привод</th>
-                    <th>Пробег</th>
-                    <th>Цвет</th>
-                    <th>Фото</th>
-                    <th>Цена за день</th>
-                    <th>Штраф за час</th>
-                    <th>Залог</th>
-                    <th>Статус</th>
-                    <th>Тип кузова</th>
-                    <th>Действия</th> 
-                    <th>Удаление</th>
-                </tr>
-            </thead>
-            <tbody id="car-table-body"></tbody>
-        </table>
+            <div id="status-modal" style="display:none;">
+                <div>
+                    <h2>Изменить статус пользователя:</h2>
+                    <label for="user-status">Выберите новый статус:</label>
+                    <select id="user-status">
+                        <option value="admin">Администратор</option>
+                        <option value="moder">Сотрудник</option>
+                        <option value="user">Обычный пользователь</option>
+                        <option value="blocked">Заблокирован</option>
+                    </select>
+                    <button id="save-status-button">Сохранить</button>
+                    <button onclick="closeModal()">Закрыть</button>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 

@@ -1,21 +1,20 @@
-
 table {
-    width: 100%; /* Занимает всю ширину страницы */
-    border-collapse: collapse; /* Убирает двойные границы */
+    width: 100%;
+    border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #ffffff; /* Граница для ячеек */
-    padding: 12px; /* Отступы внутри ячеек */
-    text-align: center; /* Центрирование текста */
+    border: 1px solid #ffffff;
+    padding: 12px;
+    text-align: center;
 }
 
 th {
-    background-color: #5e5e5e; /* Цвет фона заголовков */
+    background-color: #5e5e5e;
 }
 
 .car-image {
-    height: 100px; /* Высота изображений автомобилей */
+    height: 100px;
 }
 
 .search-container button {
@@ -27,14 +26,15 @@ th {
     border: none;
     cursor: pointer;
 }
+
 .search-container button:hover {
     background-color: #45a049;
 }
 
-/* Добавление стилей для формы поиска */
 .search-container {
     margin-bottom: 20px;
 }
+
 .search-container input {
     padding: 10px;
     width: 300px;
@@ -44,7 +44,7 @@ th {
         
 table {
     width: 100%;
-    border-collapse: collapse; /* Убирает двойные границы между ячейками */
-    overflow-x: auto; /* Добавляет прокрутку по горизонтали */
-    display: block; /* Позволяет использовать overflow */
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
 }

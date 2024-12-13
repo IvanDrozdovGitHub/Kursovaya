@@ -5,11 +5,13 @@
     background: 0 !important;
     line-height: 1.5;
 }
+
 td, th
 {
     text-align: left;
     padding: 20px;
 }
+
 th{
     width:150px;
 }
@@ -32,22 +34,21 @@ th{
     text-align: left;
 }
 
-/* */
 .car-info {
-    color: white; /* Цвет текста */
-    padding: 0px 20px; /* Отступы вокруг блока */
+    color: white;
+    padding: 0px 20px;
 }
 
 .car-make h2 {
-    font-size: 2em; /* Размер шрифта для названия марки */
-    margin: 0; /* Убирает отступы по умолчанию */
-    font-weight: bold; /* Делаем шрифт жирным */
+    font-size: 2em;
+    margin: 0;
+    font-weight: bold;
 }
 
 .car-model p{
     font-family: "Oswald", Sans-serif;
     font-size: 47px;
-    margin: 5px 0 0 0; /* Отступы сверху, снизу - ноль */
-    color: #f5bc42; /* Цвет текста для модели */
-    font-weight:bold; /* Делаем шрифт жирным */
+    margin: 5px 0 0 0;
+    color: #f5bc42;
+    font-weight: bold;
 }

@@ -1,0 +1,14 @@
+.deals-table{
+    width: 4000px;
+    max-width: 100%;
+}
+
+.save-status-button {
+    cursor: pointer;
+    text-decoration:none;
+}
+
+.save-status-button:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
