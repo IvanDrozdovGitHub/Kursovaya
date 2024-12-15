@@ -8,7 +8,7 @@ module.exports = (app) => {
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'drive40',
+    database: 'test',
     password: '21822',
     port: 5432,
 });
@@ -86,6 +86,7 @@ app.post('/login', async (req, res) => {
 
         const match = await bcrypt.compare(password_user, user.password_user);
         if (!match) {
+            req.session.firstPasswordAttempt = password_user;
             return res.redirect('/login');
         }
 

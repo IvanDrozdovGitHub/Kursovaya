@@ -59,6 +59,8 @@ function updateDeal(dealId) {
     const actualDate = document.getElementById(`actual-date-${dealId}`).value;
     const penaltyStatus = document.getElementById(`penalty-status-${dealId}`).value;
     const pledgeStatus = document.getElementById(`pledge-status-${dealId}`).value;
+    const totalAmount = document.getElementById(`total-amount-${dealId}`).value;
+    
 
     const updatedData = {
         actual_date_time_end: actualDate,
@@ -154,7 +156,6 @@ function populateDealTable(deals) {
                         <option value="0" ${!deal.status_pledge ? 'selected' : ''}>Возвращен</option>
                         <option value="1" ${deal.status_pledge ? 'selected' : ''}>Не возвращен</option>
                     </select>
-                    <input type="number" id="total-amount-${deal.deal_id}" value="${deal.total_amount !== null ? deal.total_amount.toFixed(2) : ''}" step="0.01">
                     <input type="number" id="total-amount-${deal.deal_id}" value="${deal.total_amount !== null ? deal.total_amount.toFixed(2) : ''}" step="0.01">
                     <button onclick="updateDeal(${deal.deal_id})">Сохранить изменения</button>
                 ` : ''}

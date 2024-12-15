@@ -13,7 +13,7 @@ module.exports = (app, upload) => {
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'drive40',
+    database: 'test',
     password: '21822',
     port: 5432,
 });
